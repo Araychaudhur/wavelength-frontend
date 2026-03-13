@@ -371,21 +371,9 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                             setQueueIndex(index)  // ✅ Set index to clicked song's position
                             setIsPlaying(true)
                             
-                            // Update audio source for playlist song
-                            try {
-                              const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`, {
-                                headers: {
-                                  "ngrok-skip-browser-warning": "69420"
-                                }
-                              })
-                              const data = await response.json()
-                              
-                              if (data.status === "success" && audioRef.current) {
-                                audioRef.current.src = data.stream_url
-                                await audioRef.current.play()
-                              }
-                            } catch (error) {
-                              console.error("Stream error:", error)
+                            if (audioRef.current) {
+                              audioRef.current.src = `${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`;
+                              audioRef.current.play().catch(e => console.error("Playback error:", e));
                             }
                           }}
                         >
