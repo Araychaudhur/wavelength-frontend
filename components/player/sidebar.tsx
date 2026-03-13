@@ -39,7 +39,11 @@ export function Sidebar({ currentView, setCurrentView, refreshLibrary }: Sidebar
   const fetchPlaylists = async () => {
     setIsLoading(true)
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       if (data.status === "success") {
         setPlaylists(data.data)
@@ -62,6 +66,7 @@ export function Sidebar({ currentView, setCurrentView, refreshLibrary }: Sidebar
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify({ url: importUrl }),
       })
@@ -106,6 +111,7 @@ export function Sidebar({ currentView, setCurrentView, refreshLibrary }: Sidebar
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify({
           name: newPlaylistName,

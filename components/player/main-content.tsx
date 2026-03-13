@@ -56,7 +56,11 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
   // API Integration
   const fetchPlaylists = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       if (data.status === "success") {
         setPlaylists(data.data)
@@ -71,14 +75,22 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
     try {
       if (playlistId === "liked-songs") {
         // For "Liked Songs", fetch from library/songs table
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/library`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/library`, {
+          headers: {
+            "ngrok-skip-browser-warning": "69420"
+          }
+        })
         const data = await response.json()
         if (data.status === "success") {
           setPlaylistSongs(data.data)
         }
       } else {
         // For regular playlists, fetch from playlist_songs junction table
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists/${playlistId}/songs`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists/${playlistId}/songs`, {
+          headers: {
+            "ngrok-skip-browser-warning": "69420"
+          }
+        })
         const data = await response.json()
         if (data.status === "success") {
           setPlaylistSongs(data.data)
@@ -98,6 +110,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify({
           video_id: song.video_id,
@@ -125,6 +138,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify(song),
       });
@@ -150,7 +164,11 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
     
     setIsLoading(true)
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?q=${encodeURIComponent(query)}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?q=${encodeURIComponent(query)}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       
       if (data.status === "success") {
@@ -355,7 +373,11 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                             
                             // Update audio source for playlist song
                             try {
-                              const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`)
+                              const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`, {
+                                headers: {
+                                  "ngrok-skip-browser-warning": "69420"
+                                }
+                              })
                               const data = await response.json()
                               
                               if (data.status === "success" && audioRef.current) {

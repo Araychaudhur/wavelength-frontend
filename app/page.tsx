@@ -59,7 +59,11 @@ export default function Page() {
 
   const refreshLibrary = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/playlists`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       if (data.status === "success") {
         setPlaylists(data.data)
@@ -79,6 +83,9 @@ export default function Page() {
         // Unlike: Send DELETE request
         response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/remove_song/${currentSong.video_id}`, {
           method: 'DELETE',
+          headers: {
+            "ngrok-skip-browser-warning": "69420"
+          }
         })
       } else {
         // Like: Send POST request
@@ -86,6 +93,7 @@ export default function Page() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            "ngrok-skip-browser-warning": "69420"
           },
           body: JSON.stringify({
             video_id: currentSong.video_id,
@@ -122,7 +130,11 @@ export default function Page() {
     
     // Fetch radio queue when playing any song
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/radio/${song.video_id}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/radio/${song.video_id}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       
       if (data.status === 'success') {
@@ -133,7 +145,11 @@ export default function Page() {
     }
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       
       if (data.status === "success" && audioRef.current) {
@@ -154,7 +170,11 @@ export default function Page() {
     setCurrentSong(song)
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       
       if (data.status === "success" && audioRef.current) {
@@ -244,7 +264,11 @@ export default function Page() {
   const fetchLibrary = async () => {
     setIsLibraryLoading(true)
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/library`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/library`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420"
+        }
+      })
       const data = await response.json()
       
       if (data.status === 'success') {
@@ -289,7 +313,11 @@ export default function Page() {
       }
 
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/check_song/${currentSong.video_id}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/check_song/${currentSong.video_id}`, {
+          headers: {
+            "ngrok-skip-browser-warning": "69420"
+          }
+        })
         const data = await response.json()
         
         console.log('Checking DB for:', currentSong.video_id, 'Result:', data.is_saved)
