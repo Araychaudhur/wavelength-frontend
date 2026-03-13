@@ -291,7 +291,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
               {selectedPlaylist ? (
                 // Show playlist info when a playlist is selected
                 <div className="flex flex-col items-center w-full max-w-md">
-                  <div className="relative w-full aspect-square overflow-hidden rounded-xl shadow-2xl mb-8 border border-slate-800/50">
+                  <div className="relative w-3/4 md:w-full max-w-[280px] md:max-w-md aspect-square overflow-hidden rounded-xl shadow-2xl mb-4 md:mb-8 border border-slate-800/50">
                     <Image
                       src={selectedPlaylist.thumbnail_url || "/images/album-1.jpg"}
                       alt={`${selectedPlaylist.name} cover`}
@@ -321,7 +321,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
               ) : currentSong ? (
                 // Show current song when no playlist is selected
                 <div className="flex flex-col items-center w-full max-w-md">
-                  <div className="relative w-full aspect-square overflow-hidden rounded-xl shadow-2xl mb-8 border border-slate-800/50">
+                  <div className="relative w-3/4 md:w-full max-w-[280px] md:max-w-md aspect-square overflow-hidden rounded-xl shadow-2xl mb-4 md:mb-8 border border-slate-800/50">
                     <Image
                       src={currentSong.thumbnail_url || currentSong.album_art_url || "/images/album-1.jpg"}
                       alt={`${currentSong.album || "album"} art`}

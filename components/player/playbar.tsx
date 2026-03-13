@@ -170,7 +170,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
       </div>
 
       {/* Volume & Controls - Right */}
-      <div className="flex w-1/4 min-w-0 items-center justify-end gap-3 lg:w-[30%]">
+      <div className="hidden md:flex w-1/4 min-w-0 items-center justify-end gap-3 lg:w-[30%]">
         {currentView === 'now-playing' && onTogglePlaylistView && (
           <button
             className="text-slate-400 hover:text-white transition-colors mr-2"

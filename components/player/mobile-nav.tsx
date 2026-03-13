@@ -17,7 +17,7 @@ const navItems = [
 export function MobileNav({ currentView, setCurrentView }: MobileNavProps) {
   return (
     <nav
-      className="flex shrink-0 items-center justify-around border-t border-border bg-player-surface px-2 py-2 md:hidden"
+      className="flex shrink-0 items-center justify-around border-t border-border bg-player-surface px-2 py-2 pb-6 md:hidden"
       aria-label="Mobile navigation"
     >
       {navItems.map((item) => {
