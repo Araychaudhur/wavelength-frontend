@@ -417,7 +417,7 @@ export default function Page() {
       />
 
       {/* Mobile bottom nav — visible only on small screens */}
-      <MobileNav />
+      <MobileNav currentView={currentView} setCurrentView={setCurrentView} />
     </div>
   )
 }
