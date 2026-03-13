@@ -144,22 +144,9 @@ export default function Page() {
       console.error('Error fetching radio queue:', error)
     }
     
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`, {
-        headers: {
-          "ngrok-skip-browser-warning": "69420"
-        }
-      });
-
-      const blob = await response.blob();
-      const objectUrl = URL.createObjectURL(blob);
-
-      if (audioRef.current) {
-        audioRef.current.src = objectUrl;
-        await audioRef.current.play().catch(e => console.error("Playback error:", e));
-      }
-    } catch (error) {
-      console.error("Stream error:", error);
+    if (audioRef.current) {
+      audioRef.current.src = `${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`;
+      await audioRef.current.play().catch(e => console.error("Playback error:", e));
     }
   }
 
@@ -170,22 +157,9 @@ export default function Page() {
     setQueueIndex(index)
     setCurrentSong(song)
     
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`, {
-        headers: {
-          "ngrok-skip-browser-warning": "69420"
-        }
-      });
-
-      const blob = await response.blob();
-      const objectUrl = URL.createObjectURL(blob);
-
-      if (audioRef.current) {
-        audioRef.current.src = objectUrl;
-        await audioRef.current.play().catch(e => console.error("Playback error:", e));
-      }
-    } catch (error) {
-      console.error("Stream error:", error);
+    if (audioRef.current) {
+      audioRef.current.src = `${process.env.NEXT_PUBLIC_API_URL}/stream/${song.video_id}`;
+      await audioRef.current.play().catch(e => console.error("Playback error:", e));
     }
   }
 
