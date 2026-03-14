@@ -343,13 +343,23 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
 
             {/* Right Column - Queue or Playlist Songs */}
             <div className="flex-1 flex flex-col bg-slate-900/50 backdrop-blur-sm border-l border-slate-800/50 min-h-0">
-              <div className="p-6 border-b border-slate-800/50 flex-shrink-0">
-                <h2 className="text-xl font-semibold text-white mb-2">
-                  {showPlaylistView ? 'Playlist Songs' : 'Queue'}
-                </h2>
-                <p className="text-sm text-slate-400">
-                  {showPlaylistView ? 'Songs in this playlist' : 'Up next from your station'}
-                </p>
+              <div className="p-6 border-b border-slate-800/50 flex-shrink-0 flex items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-white mb-1">
+                    {showPlaylistView ? 'Playlist Songs' : 'Queue'}
+                  </h2>
+                  <p className="text-sm text-slate-400">
+                    {showPlaylistView ? 'Songs in this playlist' : 'Up next from your station'}
+                  </p>
+                </div>
+                {selectedPlaylist && (
+                  <button
+                    onClick={() => setShowPlaylistView(!showPlaylistView)}
+                    className="ml-4 flex-shrink-0 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-medium text-white transition-colors hover:bg-slate-700 md:hidden"
+                  >
+                    {showPlaylistView ? 'View Queue' : 'View Playlist'}
+                  </button>
+                )}
               </div>
               <ScrollArea className="flex-1 p-6 min-h-0">
                 <div className="space-y-3">

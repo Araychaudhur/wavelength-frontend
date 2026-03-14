@@ -404,6 +404,7 @@ export default function Page() {
         setCurrentView={setCurrentView}
         showPlaylistView={showPlaylistView}
         onTogglePlaylistView={() => setShowPlaylistView(!showPlaylistView)}
+        onExpandPlayer={() => { setCurrentView('now-playing'); setShowPlaylistView(false); }}
       />
 
       {/* Hidden Audio Element */}

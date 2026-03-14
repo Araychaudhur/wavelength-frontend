@@ -48,9 +48,10 @@ interface PlaybarProps {
   queueIndex: number
   showPlaylistView: boolean
   onTogglePlaylistView?: () => void
+  onExpandPlayer?: () => void
 }
 
-export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime, duration, volume, onVolumeChange, onSeek, isLiked, onLikeSong, onNext, onPrevious, isShuffle, repeatMode, onToggleRepeat, onToggleShuffle, currentView, setCurrentView, activeQueue, queueIndex, showPlaylistView, onTogglePlaylistView }: PlaybarProps) {
+export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime, duration, volume, onVolumeChange, onSeek, isLiked, onLikeSong, onNext, onPrevious, isShuffle, repeatMode, onToggleRepeat, onToggleShuffle, currentView, setCurrentView, activeQueue, queueIndex, showPlaylistView, onTogglePlaylistView, onExpandPlayer }: PlaybarProps) {
   return (
     <footer
       className="flex h-20 shrink-0 items-center border-t border-border bg-player-surface px-4 lg:h-24 lg:px-6"
@@ -59,7 +60,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
     >
       {/* Now Playing - Left */}
       <div className="flex flex-1 min-w-0 items-center gap-3 md:w-[30%] cursor-pointer md:cursor-default"
-           onClick={() => { if (window.innerWidth < 768) setCurrentView('now-playing') }}>
+           onClick={() => { if (window.innerWidth < 768 && onExpandPlayer) onExpandPlayer(); else if (window.innerWidth < 768) setCurrentView('now-playing'); }}>
         <div className="relative size-12 shrink-0 overflow-hidden rounded-md shadow-lg lg:size-14">
           <Image
             src={currentSong?.thumbnail_url || "/images/now-playing.jpg"}
