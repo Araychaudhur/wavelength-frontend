@@ -58,7 +58,8 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
       aria-label="Music player controls"
     >
       {/* Now Playing - Left */}
-      <div className="flex w-1/4 min-w-0 items-center gap-3 lg:w-[30%]">
+      <div className="flex flex-1 min-w-0 items-center gap-3 md:w-[30%] cursor-pointer md:cursor-default"
+           onClick={() => { if (window.innerWidth < 768) setCurrentView('now-playing') }}>
         <div className="relative size-12 shrink-0 overflow-hidden rounded-md shadow-lg lg:size-14">
           <Image
             src={currentSong?.thumbnail_url || "/images/now-playing.jpg"}
@@ -93,7 +94,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
       <div className="flex flex-1 flex-col items-center gap-1.5 px-4 lg:gap-2">
         <div className="flex items-center gap-3 lg:gap-5">
           <button
-            className={`transition-colors ${
+            className={`hidden md:block transition-colors ${
               isShuffle 
                 ? "text-teal-400" 
                 : "text-muted-foreground hover:text-foreground"
@@ -104,7 +105,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
             <Shuffle className="size-4" />
           </button>
           <button
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="hidden md:block text-muted-foreground transition-colors hover:text-foreground"
             aria-label="Previous track"
             onClick={onPrevious}
           >
@@ -129,7 +130,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
             <SkipForward className="size-5 fill-current" />
           </button>
           <button
-            className={`transition-colors relative ${
+            className={`hidden md:block transition-colors relative ${
               repeatMode === 'OFF' 
                 ? "text-muted-foreground hover:text-foreground" 
                 : "text-teal-400"
@@ -151,7 +152,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
         </div>
 
         {/* Progress Bar */}
-        <div className="flex w-full max-w-xl items-center gap-2">
+        <div className="hidden md:flex w-full max-w-xl items-center gap-2">
           <span className="w-10 text-right text-[11px] tabular-nums text-muted-foreground">
             {formatTime(currentTime)}
           </span>

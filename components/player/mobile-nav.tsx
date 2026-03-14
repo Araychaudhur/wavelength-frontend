@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Search, Library, Music2 } from "lucide-react"
+import { Home, Search, Library } from "lucide-react"
 
 interface MobileNavProps {
   currentView: 'search' | 'library' | 'now-playing'
@@ -11,7 +11,6 @@ const navItems = [
   { icon: Home, label: "Home" },
   { icon: Search, label: "Search" },
   { icon: Library, label: "Library" },
-  { icon: Music2, label: "Playlists" },
 ]
 
 export function MobileNav({ currentView, setCurrentView }: MobileNavProps) {
@@ -22,7 +21,7 @@ export function MobileNav({ currentView, setCurrentView }: MobileNavProps) {
     >
       {navItems.map((item) => {
         const isActive = (item.label === 'Home' || item.label === 'Search') && currentView === 'search' ||
-                         (item.label === 'Library' || item.label === 'Playlists') && currentView === 'library';
+                         item.label === 'Library' && currentView === 'library';
         
         return (
           <button
@@ -33,7 +32,7 @@ export function MobileNav({ currentView, setCurrentView }: MobileNavProps) {
             aria-label={item.label}
             onClick={() => {
               if (item.label === 'Home' || item.label === 'Search') setCurrentView('search');
-              if (item.label === 'Library' || item.label === 'Playlists') setCurrentView('library');
+              if (item.label === 'Library') setCurrentView('library');
             }}
           >
             <item.icon className="size-5" />

@@ -743,7 +743,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                   </p>
 
                   {/* Table Header */}
-                  <div className="grid grid-cols-[1fr_1fr_auto_auto] items-center gap-4 border-b border-border px-4 pb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground md:grid-cols-[2.5rem_1fr_1fr_auto_auto]">
+                  <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b border-border px-4 pb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground md:grid-cols-[2.5rem_1fr_1fr_auto_auto]">
                     <span className="hidden md:block">#</span>
                     <span>Title</span>
                     <span className="hidden sm:block">Album</span>
@@ -758,7 +758,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                     {searchResults.map((song: any, index: number) => (
                       <li key={song.video_id || song.id || index}>
                         <div 
-                          className="group grid grid-cols-[1fr_1fr_auto_auto] items-center gap-4 rounded-lg px-4 py-2.5 transition-colors hover:bg-player-hover md:grid-cols-[2.5rem_1fr_1fr_auto_auto] cursor-pointer"
+                          className="group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors hover:bg-player-hover md:grid md:grid-cols-[2.5rem_1fr_1fr_auto_auto] cursor-pointer"
                           onClick={() => playNewStation(song)}
                         >
                           {/* Track Number / Play */}
@@ -807,7 +807,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                               <button
-                                className="flex size-8 items-center justify-center rounded-full text-muted-foreground opacity-0 transition-all hover:bg-primary hover:text-primary-foreground group-hover:opacity-100"
+                                className="flex size-8 items-center justify-center rounded-full text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground opacity-100 md:opacity-0 md:group-hover:opacity-100"
                                 aria-label="More options"
                               >
                                 <MoreVertical className="size-4" />
