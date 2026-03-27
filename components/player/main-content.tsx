@@ -342,7 +342,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
             </div>
 
             {/* Right Column - Queue or Playlist Songs */}
-            <div className="flex-1 flex flex-col bg-slate-900/50 backdrop-blur-sm md:border-l border-slate-800/50 min-h-[300px] md:min-h-0">
+            <div className="flex-1 flex flex-col bg-slate-900/50 backdrop-blur-sm md:border-l border-slate-800/50 min-h-0 overflow-hidden">
               <div className="p-6 border-b border-slate-800/50 flex-shrink-0 flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white mb-1">
@@ -361,7 +361,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                   </button>
                 )}
               </div>
-              <ScrollArea className="flex-1 p-6 min-h-0">
+              <div className="flex-1 p-6 min-h-0 overflow-y-auto pb-32">
                 <div className="space-y-3">
                   {showPlaylistView ? (
                     // Playlist View - Show playlist songs
@@ -735,7 +735,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                     </>
                   )}
                 </div>
-              </ScrollArea>
+              </div>
             </div>
           </div>
         ) : (

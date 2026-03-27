@@ -95,18 +95,18 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
       <div className="flex flex-1 flex-col items-center gap-1.5 px-4 lg:gap-2">
         <div className="flex items-center gap-3 lg:gap-5">
           <button
-            className={`hidden md:block transition-colors ${
+            className={`transition-colors ${
               isShuffle 
                 ? "text-teal-400" 
                 : "text-muted-foreground hover:text-foreground"
-            }`}
+            } ${currentView === 'now-playing' ? 'block' : 'hidden md:block'}`}
             aria-label="Toggle shuffle"
             onClick={onToggleShuffle}
           >
             <Shuffle className="size-4" />
           </button>
           <button
-            className="hidden md:block text-muted-foreground transition-colors hover:text-foreground"
+            className={`text-muted-foreground transition-colors hover:text-foreground ${currentView === 'now-playing' ? 'block' : 'hidden md:block'}`}
             aria-label="Previous track"
             onClick={onPrevious}
           >
@@ -131,11 +131,11 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
             <SkipForward className="size-5 fill-current" />
           </button>
           <button
-            className={`hidden md:block transition-colors relative ${
+            className={`transition-colors relative ${
               repeatMode === 'OFF' 
                 ? "text-muted-foreground hover:text-foreground" 
                 : "text-teal-400"
-            }`}
+            } ${currentView === 'now-playing' ? 'block' : 'hidden md:block'}`}
             aria-label={`Repeat mode: ${repeatMode}`}
             onClick={onToggleRepeat}
           >
@@ -153,7 +153,7 @@ export function Playbar({ currentSong, isPlaying, onTogglePlayPause, currentTime
         </div>
 
         {/* Progress Bar */}
-        <div className="hidden md:flex w-full max-w-xl items-center gap-2">
+        <div className={`${currentView === 'now-playing' ? 'flex' : 'hidden md:flex'} w-full max-w-xl items-center gap-2`}>
           <span className="w-10 text-right text-[11px] tabular-nums text-muted-foreground">
             {formatTime(currentTime)}
           </span>
