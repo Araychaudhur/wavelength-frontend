@@ -287,7 +287,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
           <div className="flex flex-col md:flex-row w-full h-full overflow-hidden">
             
             {/* Left Column - Locked Album Art */}
-            <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12 min-h-0 relative">
+            <div className="flex-none md:flex-1 flex flex-col items-center justify-start md:justify-center pt-8 pb-4 px-6 lg:p-12 min-h-0 relative">
               {selectedPlaylist ? (
                 // Show playlist info when a playlist is selected
                 <div className="flex flex-col items-center w-full max-w-md">
@@ -321,7 +321,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
               ) : currentSong ? (
                 // Show current song when no playlist is selected
                 <div className="flex flex-col items-center w-full max-w-md">
-                  <div className="relative w-3/4 md:w-full max-w-[280px] md:max-w-md aspect-square overflow-hidden rounded-xl shadow-2xl mb-4 md:mb-8 border border-slate-800/50">
+                  <div className="relative w-full max-w-[240px] md:max-w-md aspect-square overflow-hidden rounded-xl shadow-2xl mb-6 md:mb-8 border border-slate-800/50 flex-shrink-0">
                     <Image
                       src={currentSong.thumbnail_url || currentSong.album_art_url || "/images/album-1.jpg"}
                       alt={`${currentSong.album || "album"} art`}
@@ -342,7 +342,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
             </div>
 
             {/* Right Column - Queue or Playlist Songs */}
-            <div className="flex-1 flex flex-col bg-slate-900/50 backdrop-blur-sm border-l border-slate-800/50 min-h-0">
+            <div className="flex-1 flex flex-col bg-slate-900/50 backdrop-blur-sm md:border-l border-slate-800/50 min-h-[300px] md:min-h-0">
               <div className="p-6 border-b border-slate-800/50 flex-shrink-0 flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white mb-1">
