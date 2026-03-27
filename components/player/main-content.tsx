@@ -279,12 +279,12 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
       )}
 
       {/* Content Area */}
-      <div className={`flex flex-1 flex-col min-h-0 ${currentView === 'now-playing' ? 'overflow-hidden bg-gradient-to-b from-slate-900 to-[#0a0a0f]' : 'overflow-y-auto pb-32'}`}>
+      <div className={`flex flex-1 flex-col min-h-0 ${currentView === 'now-playing' ? 'overflow-y-auto md:overflow-hidden bg-gradient-to-b from-slate-900 to-[#0a0a0f]' : 'overflow-y-auto pb-32'}`}>
         
         {currentView === 'now-playing' ? (
           
           // Now Playing View - Split Screen (Using Flexbox instead of Grid)
-          <div className="flex flex-col md:flex-row w-full h-full overflow-hidden">
+          <div className="flex flex-col md:flex-row w-full min-h-max md:h-full md:overflow-hidden">
             
             {/* Left Column - Locked Album Art */}
             <div className="flex-none md:flex-1 flex flex-col items-center justify-start md:justify-center pt-8 pb-4 px-6 lg:p-12 min-h-0 relative">
@@ -361,7 +361,7 @@ export function MainContent({ currentSong, setCurrentSong, isPlaying, setIsPlayi
                   </button>
                 )}
               </div>
-              <div className="flex-1 p-6 min-h-0 overflow-y-auto pb-32">
+              <div className="flex-1 p-6 min-h-0 overflow-visible md:overflow-y-auto pb-32">
                 <div className="space-y-3">
                   {showPlaylistView ? (
                     // Playlist View - Show playlist songs
